@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 public class InvoiceFilter {
 
-    
+ //komentař
     private Long buyerID;
     private Long sellerID;
     private String product;
