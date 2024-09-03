@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class InvoiceFilter {
 
  //komentař
+    //komentář2 
     private Long buyerID;
     private Long sellerID;
     private String product;
