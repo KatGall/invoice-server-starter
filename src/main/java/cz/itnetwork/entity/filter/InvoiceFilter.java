@@ -9,5 +9,6 @@ public class InvoiceFilter {
     private String product;
     private Integer minPrice;
     private Integer maxPrice;
+    private Integer year;
     private Integer limit = 10;
 }
