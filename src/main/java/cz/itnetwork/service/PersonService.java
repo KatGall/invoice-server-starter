@@ -15,6 +15,5 @@ public interface PersonService {
 
     PersonDTO getPersonById(Long personId);
 
-
     List<PersonStatisticsDTO> getPersonStatistics();
 }

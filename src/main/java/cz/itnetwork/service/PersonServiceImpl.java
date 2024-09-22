@@ -11,7 +11,6 @@ import org.webjars.NotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Service
 public class PersonServiceImpl implements PersonService {
 
@@ -45,11 +44,11 @@ public class PersonServiceImpl implements PersonService {
 
         personRepository.save(person);
 
-
         PersonEntity entity = personMapper.toEntity(personDTO);
         entity = personRepository.save(entity);
        return personMapper.toDTO(entity);
     }
+
     @Override
     public List<PersonDTO> getAll() {
         return personRepository.findByHidden(false)
@@ -57,6 +56,7 @@ public class PersonServiceImpl implements PersonService {
                 .map(personMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
     @Override
     public PersonDTO getPersonById(Long personId) {
         PersonEntity personEntity = personRepository.findById(personId).orElse(null);
@@ -65,6 +65,7 @@ public class PersonServiceImpl implements PersonService {
         }
         return null;
     }
+
     @Override
     public List<PersonStatisticsDTO> getPersonStatistics() {
         return personRepository.getPersonStatistics();
@@ -74,5 +75,4 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Person with id " + id + " wasn't found in the database."));
     }
-
 }

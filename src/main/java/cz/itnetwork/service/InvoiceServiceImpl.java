@@ -97,26 +97,20 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public InvoiceDTO editInvoice(Long invoiceId, InvoiceDTO invoiceDTO) {
-
         InvoiceEntity entity = fetchInvoiceById(invoiceId);
-
         invoiceDTO.setId(invoiceId);
-
         invoiceMapper.updateEntity(invoiceDTO, entity);
-
         if (invoiceDTO.getBuyer() != null && invoiceDTO.getBuyer().getId() != null) {
             PersonEntity buyerObject = personRepository.getReferenceById(invoiceDTO.getBuyer().getId());
             entity.setBuyer(buyerObject);
         }
-
         if (invoiceDTO.getSeller() != null && invoiceDTO.getSeller().getId() != null) {
             PersonEntity sellerObject = personRepository.getReferenceById(invoiceDTO.getSeller().getId());
             entity.setSeller(sellerObject);
         }
-
         InvoiceEntity saved = invoiceRepository.save(entity);
-
         return invoiceMapper.toDTO(saved);
+
     }
     @Override
     public InvoiceEntity fetchInvoiceById(long invoiceId) {

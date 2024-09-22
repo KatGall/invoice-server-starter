@@ -31,7 +31,7 @@ public class InvoiceSpecification implements Specification<InvoiceEntity> {
             Join<PersonEntity, InvoiceEntity> sellerJoin = root.join(InvoiceEntity_.SELLER);
             predicates.add(criteriaBuilder.equal(sellerJoin.get(PersonEntity_.ID), filter.getSellerID()));
         }
-//        // Filtr podle produktu
+        // Filtr podle produktu
         if (filter.getProduct() != null) {
             String productPattern = "%" + filter.getProduct() + "%";
             Predicate productPredicate = criteriaBuilder.like(root.get(InvoiceEntity_.PRODUCT), productPattern);
